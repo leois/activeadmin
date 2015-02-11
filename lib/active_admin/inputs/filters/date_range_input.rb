@@ -25,6 +25,7 @@ module ActiveAdmin
 
         def input_html_options(input_name = gt_input_name)
           current_value = @object.public_send input_name
+          current_value = current_value.to_date if current_value.is_a? String # scoped query date
           { size: 12,
             class: "datepicker",
             max: 10,
